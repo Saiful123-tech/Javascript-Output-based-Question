@@ -1,0 +1,40 @@
+q1
+function subscribe(message){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() =>{
+     if(message){
+        resolve("subscribed")
+     }else{
+     reject(new Error("Empty message"));
+     }
+    },2000);
+    });
+}
+
+function likeTheVideo(message){
+   return new Promise((resolve,reject) =>{
+    setTimeout(() =>{
+    if(message){
+        resolve("Like the video")
+    }
+    else{
+        reject(new Error("Not Like the video"))
+    }
+},2000);
+   })
+}
+
+subscribe(null).then((res) =>{
+    console.log(res);
+   likeTheVideo(false).then((res)=>{
+        console.log(res);
+    }).catch((err) =>{
+        console.error(err);
+    })
+    
+}).catch((err) =>{
+    console.error(err);
+});
+
+
+
